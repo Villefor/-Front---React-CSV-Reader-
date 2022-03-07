@@ -14,9 +14,9 @@ export const Content = styled.div`
   max-width: 70%;
   margin: 30px;
   background: white;
-  border-radius: 4px;
+  border-radius: 15px 15px 15px 70px;
   padding: 20px;
-  box-shadow: 0px 4px 60px 0px rgb(66 66 66 / 20%);
+  box-shadow: 0 0 20px 0 rgb(0 0 0 / 5%);
 }
 
 `;

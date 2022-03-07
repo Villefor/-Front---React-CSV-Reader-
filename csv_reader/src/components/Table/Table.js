@@ -64,7 +64,12 @@ const Table = ({ parsedCsvData, delete_data, add_data }) => {
                   <td>{row.telephone}</td>
 
                   <td>
-                    <button onClick={delete_data(index)}>Deletar</button>
+                    <button
+                      onClick={delete_data(index)}
+                      className="table_delete_button"
+                    >
+                      Deletar
+                    </button>
                   </td>
                 </tr>
               </React.Fragment>

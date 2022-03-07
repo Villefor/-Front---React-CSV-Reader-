@@ -12,9 +12,10 @@ export default createGlobalStyle`
   body {
       font-family: Arial, Helvetica, sans-serif;
       font-size: 14px;
-      background: #90ebca;
+      background-image: linear-gradient(130deg,#f8f8f8 0%,#f8f8f8 89%);
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
+      word-wrap: break-word;
   }
   html, body, #root {
       height: 100%;

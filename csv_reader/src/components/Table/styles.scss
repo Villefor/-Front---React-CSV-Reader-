@@ -14,7 +14,7 @@
         margin-top: 30px;
 
         input {
-            padding: 5px;
+            padding: 8px;
             margin-left: 8px;
             font-family: Poppins;
             font-weight: 700;
@@ -27,6 +27,7 @@
           height: 50px;
           width: 180px;
           border-radius: 8px;
+          border: none;
           font-family: Poppins;
           font-weight: 700;
           font-size: 16px;
@@ -55,18 +56,34 @@
           table{
             width: 50%;
             border-collapse: collapse;
-            // width: 100%;
+            border-radius: 4px;
+            margin-top: 12px;
 
             td{
               border: 1px solid #ddd;
               padding: 8px;
+              border-radius: 8px;
+              font-family: Poppins;
+              font-weight: 700;
+              font-size: 14px;
+              color: #4c4c4c;
             }
-            th{
-              padding-top: 12px;
-              padding-bottom: 12px;
-              // text-align: left;
-              background-color: #019973;
-              color: white;
+
+            tr{
+              text-align: center;
+              th{
+                height: 50px;
+                padding-top: 12px;
+                padding-bottom: 12px;
+                background-color: #019973;
+                color: white;
+                font-family: Poppins;
+                font-weight: 700;
+                font-size: 16px;
+
+
+              }
+
             }
             tr:nth-child(even){background-color: #f2f2f2;}
             tr:hover {background-color: #ddd;}
@@ -84,6 +101,20 @@
                       padding: 8px;
                   }
               }
+          }
+          .table_delete_button{
+            background: #019973;
+            color: white;
+            height: 35px;
+            width: 80px;
+            border-radius: 8px;
+            font-family: Poppins;
+            font-weight: 700;
+            font-size: 14px;
+            border: none;
+          }
+          .table_delete_button:hover{
+            background: #000639;
           }
     }
 }
