@@ -6,10 +6,10 @@ function App() {
   return (
     <div className="App">
       <Container>
-        <Content>teste</Content>
-        <Style>
+        <Content>
           <Upload />
-        </Style>
+        </Content>
+        <Style />
       </Container>
     </div>
   );
