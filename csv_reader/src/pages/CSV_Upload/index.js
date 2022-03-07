@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Dropzone from "react-dropzone";
 import { DropContainer, UploadMessage } from "./styles";
 import Papa from "papaparse";
@@ -7,19 +7,18 @@ import Table from "../../components/Table/Table";
 // import { ToastContainer, toast } from 'react-toastify'
 // import 'react-toastify/dist/ReactToastify.css'
 
-function CVS_Upload() {
-  // const [highLighted, setLogin] = useState(false);
-  // const [csv_content, setCSV] = useState(null);
+function CVS_Upload({ handle_delete, handle_add }) {
   const [parsedCsvData, setParsedCsvData] = useState([]);
 
-  useEffect(() => {
-    console.log(parsedCsvData);
-  }, []);
+  const add_data = (obj) => {
+    handle_add(obj);
+    setParsedCsvData([...parsedCsvData, obj]);
+  };
 
-  const delete_data = (index) => {
+  const delete_data = (index) => () => {
     parsedCsvData.splice(index, 1);
+    handle_delete(index);
     setParsedCsvData(parsedCsvData);
-    console.log(parsedCsvData);
   };
 
   const parseFile = (file) => {
@@ -30,7 +29,6 @@ function CVS_Upload() {
       },
     });
   };
-  console.log(parsedCsvData);
 
   const drag_message = (isDragActive, isDragReject) => {
     if (!isDragActive) {
@@ -53,7 +51,6 @@ function CVS_Upload() {
       <Dropzone
         accept=".csv, application/vnd.ms-excel, text/csv"
         onDrop={(event) => {
-          console.log(event);
           if (event.length) {
             parseFile(event[0]);
           }
@@ -70,7 +67,11 @@ function CVS_Upload() {
           </DropContainer>
         )}
       </Dropzone>
-      <Table parsedCsvData={parsedCsvData} delete_data={delete_data} />
+      <Table
+        parsedCsvData={parsedCsvData}
+        delete_data={delete_data}
+        add_data={add_data}
+      />
     </section>
   );
 }
