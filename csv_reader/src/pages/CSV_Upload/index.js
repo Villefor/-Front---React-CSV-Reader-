@@ -1,45 +1,36 @@
-import React, { useState } from "react";
-// import Table from "../../components/Table";
-// import styles from "./styles";
+import React, { useState, useEffect } from "react";
 import Dropzone from "react-dropzone";
 import { DropContainer, UploadMessage } from "./styles";
+import Papa from "papaparse";
+
+import Table from "../../components/Table/Table";
 // import { ToastContainer, toast } from 'react-toastify'
 // import 'react-toastify/dist/ReactToastify.css'
 
-function CVS_Upload(isDragActive, isDragReject) {
+function CVS_Upload() {
   // const [highLighted, setLogin] = useState(false);
   // const [csv_content, setCSV] = useState(null);
-  const [list, setList] = useState([]);
-  const [data, setData] = useState({
-    header: "",
-    content: "",
-  });
+  const [parsedCsvData, setParsedCsvData] = useState([]);
 
-  const parse_csv = (text) => {
-    const text_result = {
-      header: [],
-      data: [],
-    };
-    console.log(text_result);
+  useEffect(() => {
+    console.log(parsedCsvData);
+  }, []);
+
+  const delete_data = (index) => {
+    parsedCsvData.splice(index, 1);
+    setParsedCsvData(parsedCsvData);
+    console.log(parsedCsvData);
   };
 
-  //     const [header, ...content] = text.split("/n");
-
-  //     text_result.header = header.split(",");
-
-  //     const max_columns = text_result.header.length;
-
-  //     content.forEach((data_lines) => {
-  //       text_result.data.push(data_lines.split(",").slice(0, max_columns));
-  //     });
-  //   };
-
-  //   const handle_upload = (files) => {
-  //     const uploaded_files = files.map((file) => ({
-  //       file,
-  //       name: file.name,
-  //     }));
-  //   };
+  const parseFile = (file) => {
+    Papa.parse(file, {
+      header: true,
+      complete: (results) => {
+        setParsedCsvData(results.data);
+      },
+    });
+  };
+  console.log(parsedCsvData);
 
   const drag_message = (isDragActive, isDragReject) => {
     if (!isDragActive) {
@@ -63,10 +54,8 @@ function CVS_Upload(isDragActive, isDragReject) {
         accept=".csv, application/vnd.ms-excel, text/csv"
         onDrop={(event) => {
           console.log(event);
-          setList(event);
-          if (list !== 0) {
-            parse_csv(list);
-            console.log(data);
+          if (event.length) {
+            parseFile(event[0]);
           }
         }}
       >
@@ -81,7 +70,7 @@ function CVS_Upload(isDragActive, isDragReject) {
           </DropContainer>
         )}
       </Dropzone>
-      {/* <Table csv_content={csv_content} /> */}
+      <Table parsedCsvData={parsedCsvData} delete_data={delete_data} />
     </section>
   );
 }

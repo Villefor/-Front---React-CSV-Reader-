@@ -1,0 +1,25 @@
+.header {
+    background: white;
+    display: flex;
+
+    div {
+        flex-direction:row ;
+        .header_img{
+            max-width: 320px;
+            width: 100%;
+            border-radius: 0 0 0 0;
+        }
+    }
+    nav{
+        display: flex;
+        flex-direction: row;
+        h2{
+            font-family: "Poppins",Poppins;
+            font-weight: 400;
+            font-size: 20px;
+            color: #4c4c4c;
+            padding: 20px 20px;
+            line-height: 20px;
+        }
+    }
+}
