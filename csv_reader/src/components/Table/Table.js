@@ -13,11 +13,11 @@ const Table = ({ parsedCsvData, delete_data, add_data }) => {
 
   const handle_add = () => {
     const obj = {
-      id,
+      id: parsedCsvData.length + 1,
       name,
       telephone,
     };
-    if (id !== "" && name !== "" && telephone !== "") add_data(obj);
+    if (name !== "" && telephone !== "") add_data(obj);
   };
 
   return (
@@ -30,13 +30,25 @@ const Table = ({ parsedCsvData, delete_data, add_data }) => {
           {show && (
             <tr>
               <td>
-                <input onChange={(event) => setID(event.target.value)} />
+                <input
+                  value={parsedCsvData.length + 1}
+                  disabled
+                  onChange={(event) => setID(event.target.value)}
+                />
               </td>
               <td>
-                <input onChange={(event) => setName(event.target.value)} />
+                <input
+                  required
+                  maxlength="20"
+                  onChange={(event) => setName(event.target.value)}
+                />
               </td>
               <td>
-                <input onChange={(event) => setTelephone(event.target.value)} />
+                <input
+                  required
+                  maxlength="20"
+                  onChange={(event) => setTelephone(event.target.value)}
+                />
               </td>
               <td>
                 <button onClick={handle_add} className="table_add_button">

@@ -9,7 +9,7 @@
     .table_div{
         display: flex;
         flex-direction: row;
-        align-items: center;
+        // align-items: center;
         justify-content: space-around;
         margin-top: 30px;
 
@@ -40,7 +40,7 @@
         .table_add_button{
             background: #019973;
             color: white;
-            height: 29px;
+            height: 35px;
             width: 90px;
             border-radius: 8px;
             padding-bottom: 2px;
@@ -48,6 +48,7 @@
             font-family: Poppins;
             font-weight: 700;
             font-size: 14px;
+            border: none;
           }
           .table_add_button:hover{
               background: #000639;
