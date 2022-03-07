@@ -54,6 +54,22 @@
 
           table{
             width: 50%;
+            border-collapse: collapse;
+            // width: 100%;
+
+            td{
+              border: 1px solid #ddd;
+              padding: 8px;
+            }
+            th{
+              padding-top: 12px;
+              padding-bottom: 12px;
+              // text-align: left;
+              background-color: #019973;
+              color: white;
+            }
+            tr:nth-child(even){background-color: #f2f2f2;}
+            tr:hover {background-color: #ddd;}
           }
 
           .table_thead{
@@ -64,6 +80,8 @@
                       font-family: Poppins;
                       font-weight: 700;
                       font-size: 14px;
+                      border: 1px solid #ddd;
+                      padding: 8px;
                   }
               }
           }

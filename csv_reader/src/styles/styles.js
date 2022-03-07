@@ -16,5 +16,7 @@ export const Content = styled.div`
   background: white;
   border-radius: 4px;
   padding: 20px;
-  box-shadow: 0px 4px 60px 0px rgb(66 66 66 / 80%);
+  box-shadow: 0px 4px 60px 0px rgb(66 66 66 / 20%);
+}
+
 `;
