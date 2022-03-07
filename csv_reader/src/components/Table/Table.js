@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./styles.scss";
 
 const Table = ({ parsedCsvData, delete_data, add_data }) => {
   const [show, setShow] = useState(false);
@@ -20,8 +21,10 @@ const Table = ({ parsedCsvData, delete_data, add_data }) => {
   };
 
   return (
-    <>
-      <button onClick={handle_show}>Adicionar cédula</button>
+    <div className="table_div">
+      <button onClick={handle_show} className="table_add_cell_button">
+        Adicionar célula
+      </button>
       {parsedCsvData && (
         <table>
           {show && (
@@ -36,12 +39,14 @@ const Table = ({ parsedCsvData, delete_data, add_data }) => {
                 <input onChange={(event) => setTelephone(event.target.value)} />
               </td>
               <td>
-                <button onClick={handle_add}>Adicionar</button>
+                <button onClick={handle_add} className="table_add_button">
+                  Adicionar
+                </button>
               </td>
             </tr>
           )}
-          <thead>
-            <tr>
+          <thead className="table_thead">
+            <tr className="table_tr">
               <th>ID</th>
               <th>Name</th>
               <th>Telephone</th>
@@ -67,7 +72,7 @@ const Table = ({ parsedCsvData, delete_data, add_data }) => {
           </tbody>
         </table>
       )}
-    </>
+    </div>
   );
 };
 

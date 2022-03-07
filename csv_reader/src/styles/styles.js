@@ -6,6 +6,7 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 5%;
 `;
 
 export const Content = styled.div`
@@ -15,4 +16,5 @@ export const Content = styled.div`
   background: white;
   border-radius: 4px;
   padding: 20px;
+  box-shadow: 0px 4px 60px 0px rgb(66 66 66 / 80%);
 `;

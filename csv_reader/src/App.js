@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import Upload from "./pages/CSV_Upload";
 import Header from "../src/components/header/Header";
+import Upload from "./pages/CSV_Upload";
+import Footer from "./components/footer/Footer";
 import Style from "./styles/global";
 import { Container, Content } from "./styles/styles";
 import "./App.scss";
@@ -19,13 +20,14 @@ function App() {
 
   return (
     <div className="App">
+      <Header />
       <Container>
         <Content>
-          <Header />
           <Upload handle_delete={handle_delete} handle_add={handle_add} />
         </Content>
         <Style />
       </Container>
+      <Footer />
     </div>
   );
 }

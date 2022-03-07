@@ -11,7 +11,7 @@ const dragReject = css`
 export const DropContainer = styled.div.attrs({
   className: "dropzone",
 })`
-  border: 1px dashed #ddd;
+  border: 3px dashed #ddd;
   border-radius: 4px;
   cursor: pointer;
   transition: height 0.2s ease;
@@ -31,4 +31,7 @@ export const UploadMessage = styled.p`
   justify-content: center;
   align-items: center;
   padding: 15px 0;
+  font-size: 18px;
+  font-family: Poppins;
+  font-weight: 700;
 `;
