@@ -3,12 +3,18 @@ import "./styles.scss";
 
 const Table = ({ parsedCsvData, delete_data, add_data }) => {
   const [show, setShow] = useState(false);
+  const [show_input, setFilter] = useState(false);
+  const [filters, setFilters] = useState("");
   const [id, setID] = useState("");
   const [name, setName] = useState("");
   const [telephone, setTelephone] = useState("");
 
   const handle_show = () => {
     setShow(!show);
+  };
+
+  const handle_filter_input = () => {
+    setFilter(!show_input);
   };
 
   const handle_add = () => {
@@ -22,9 +28,24 @@ const Table = ({ parsedCsvData, delete_data, add_data }) => {
 
   return (
     <div className="table_div">
-      <button onClick={handle_show} className="table_add_cell_button">
-        Adicionar célula
-      </button>
+      <div className="table_div_button">
+        <button onClick={handle_show} className="table_add_cell_button">
+          Adicionar célula
+        </button>
+        <button className="table_button_filter" onClick={handle_filter_input}>
+          Filtrar cédulas
+        </button>
+        {show_input && (
+          <>
+            <input
+              className="table_filter_input"
+              maxLength="20"
+              onChange={(event) => setFilters(event.target.value)}
+              placeholder="Insetir nome"
+            />
+          </>
+        )}
+      </div>
       {parsedCsvData && (
         <table>
           {show && (
@@ -39,14 +60,14 @@ const Table = ({ parsedCsvData, delete_data, add_data }) => {
               <td>
                 <input
                   required
-                  maxlength="20"
+                  maxLength="20"
                   onChange={(event) => setName(event.target.value)}
                 />
               </td>
               <td>
                 <input
                   required
-                  maxlength="20"
+                  maxLength="20"
                   onChange={(event) => setTelephone(event.target.value)}
                 />
               </td>
@@ -60,32 +81,36 @@ const Table = ({ parsedCsvData, delete_data, add_data }) => {
           <thead className="table_thead">
             <tr className="table_tr">
               <th>ID</th>
-              <th>Name</th>
-              <th>Telephone</th>
+              <th>Nome</th>
+              <th>Telefone</th>
               <th>Ações</th>
             </tr>
           </thead>
           <tbody>
-            {parsedCsvData.map((row, index) => (
-              <React.Fragment key={index}>
-                <tr>
-                  <td>{row.id}</td>
+            {parsedCsvData
+              .filter((item) =>
+                item.name.toLowerCase().includes(filters.toLowerCase())
+              )
+              .map((row, index) => (
+                <React.Fragment key={index}>
+                  <tr>
+                    <td>{row.id}</td>
 
-                  <td>{row.name}</td>
+                    <td>{row.name}</td>
 
-                  <td>{row.telephone}</td>
+                    <td>{row.telephone}</td>
 
-                  <td>
-                    <button
-                      onClick={delete_data(index)}
-                      className="table_delete_button"
-                    >
-                      Deletar
-                    </button>
-                  </td>
-                </tr>
-              </React.Fragment>
-            ))}
+                    <td>
+                      <button
+                        onClick={delete_data(index)}
+                        className="table_delete_button"
+                      >
+                        Deletar
+                      </button>
+                    </td>
+                  </tr>
+                </React.Fragment>
+              ))}
           </tbody>
         </table>
       )}
